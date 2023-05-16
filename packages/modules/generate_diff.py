@@ -14,35 +14,30 @@ def generate_diff(first_file, second_file):
     sorted_list = '{'
     sorted_list += '\n'
     for key in sorted(list_of_keys):
-        if type(first_dict[key]) == bool or type(second_dict[key]) == bool:
-            if key in first_dict and key not in second_dict:
-                if first_dict[key] == True:
-                    sorted_list += f"- {key}: true\n"
-                elif first_dict[key] == False:
-                     sorted_list += f"- {key}: false\n"
-                elif key not in first_dict and key in second_dict:
-                    if second_dict[key] == True:
-                        sorted_list += f"- {key}: true\n"
-                    elif second_dict[key] == False:
-                        sorted_list += f"- {key}: false\n"
-                elif key in first_dict and key in second_dict:
-                    if first_dict[key] == True:
-                        sorted_list += f"- {key}: true\n"
-                    elif first_dict[key] == False:
-                        sorted_list += f"- {key}: false\n"
-                continue
+        if first_dict.get(key) == True or first_dict.get(key) == False:  #если булево значение в первом словаре
+            if first_dict[key] == True:
+                sorted_list += f"  - {key}: true\n"
+            elif first_dict[key] == False:
+                sorted_list += f"  - {key}: false\n"
+            continue
+        elif second_dict.get(key) == True or second_dict.get(key) == False:  #если булево значение во втором словаре
+            if second_dict[key] == True:
+                sorted_list += f"  - {key}: true\n"
+            elif second_dict[key] == False:
+                sorted_list += f"  - {key}: false\n"
+            continue
         if key in first_dict and key in second_dict:  # если ключ из первого словаря есть во втором словаре
             if first_dict[key] == second_dict[key]:  # если значения равны
-                sorted_list += f"  {key}: {first_dict[key]}\n"
+                sorted_list += f"    {key}: {first_dict[key]}\n"
             elif first_dict[key] != second_dict[key]:  # если значения не равны
-                sorted_list += f"- {key}: {first_dict[key]}\n"
-                sorted_list += f"+ {key}: {second_dict[key]}\n"
+                sorted_list += f"  - {key}: {first_dict[key]}\n"
+                sorted_list += f"  + {key}: {second_dict[key]}\n"
         if key not in second_dict and key in first_dict:  # если ключ из первого словаря отсутствует во втором словаре
-            sorted_list += f"- {key}: {first_dict[key]}\n"
+            sorted_list += f"  - {key}: {first_dict[key]}\n"
         if key not in first_dict and key in second_dict:  # если ключ из второго словаря отсутствует в первом словаре
-            sorted_list += f"+ {key}: {second_dict[key]}\n"
+            sorted_list += f"  + {key}: {second_dict[key]}\n"
     sorted_list += "}"
-    print(sorted_list, first_dict, second_dict, list_of_keys, sep = '\n')
+    print(sorted_list)
 
 
 
