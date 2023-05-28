@@ -1,6 +1,4 @@
 import json
-first_file = json.load(open('packages/modules/file1.json'))
-second_file = json.load(open('packages/modules/file2.json'))
 
 
 def generate_diff(first_file, second_file):
@@ -22,16 +20,17 @@ def generate_diff(first_file, second_file):
             continue
         elif second_dict.get(key) is True or second_dict.get(key) is False:  # если булево значение во втором словаре  # noqa: E501
             if second_dict[key] is True:
-                sorted_list += f"  - {key}: true\n"
+                sorted_list += f"  + {key}: true\n"
             elif second_dict[key] is False:
-                sorted_list += f"  - {key}: false\n"
+                sorted_list += f"  + {key}: false\n"
             continue
         if key in first_dict and key in second_dict:  # если ключ из первого словаря есть во втором словаре  # noqa: E501
-            if first_dict[key] is second_dict[key]:  # если значения равны
+            if first_dict[key] == second_dict[key]:  # если значения равны
                 sorted_list += f"    {key}: {first_dict[key]}\n"
             elif first_dict[key] != second_dict[key]:  # если значения не равны
                 sorted_list += f"  - {key}: {first_dict[key]}\n"
                 sorted_list += f"  + {key}: {second_dict[key]}\n"
+            continue
         if key not in second_dict and key in first_dict:  # если ключ из первого словаря отсутствует во втором словаре  # noqa: E501
             sorted_list += f"  - {key}: {first_dict[key]}\n"
         if key not in first_dict and key in second_dict:  # если ключ из второго словаря отсутствует в первом словаре  # noqa: E501
