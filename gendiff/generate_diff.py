@@ -1,14 +1,9 @@
-import json
-
-
-def open_and_load_json_file(first_file, second_file):
-    first_dict = json.load(open('packages/modules/file1.json'))
-    second_dict = json.load(open('packages/modules/file2.json'))
-    return first_dict, second_dict
+from input_parser import parse_datafile
 
 
 def generate_diff(first_file, second_file):
-    first_dict, second_dict = open_and_load_json_file(first_file, second_file)
+    first_dict = parse_datafile(first_file)
+    second_dict =  parse_datafile(second_file)
     list_of_keys = {}
     for key in first_dict:
         list_of_keys[key] = None
@@ -41,4 +36,7 @@ def generate_diff(first_file, second_file):
         if key not in first_dict and key in second_dict:  # если ключ из второго словаря отсутствует в первом словаре  # noqa: E501
             sorted_list += f"+ {key}: {second_dict[key]}\n"
     sorted_list += "}"
-    print(sorted_list)
+    return sorted_list
+
+if __name__ == '__main__':
+    generate_diff(filename1, filename2)
