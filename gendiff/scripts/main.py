@@ -1,5 +1,5 @@
 import argparse
-from gendiff.generate_diff import generate_diff
+from gendiff.generate import generate_diff
 
 parser = argparse.ArgumentParser()
 

@@ -37,6 +37,3 @@ def generate_diff(first_file, second_file):
             sorted_list += f"+ {key}: {second_dict[key]}\n"
     sorted_list += "}"
     return sorted_list
-
-if __name__ == '__main__':
-    generate_diff(filename1, filename2)
