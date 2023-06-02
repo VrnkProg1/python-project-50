@@ -1,39 +1,24 @@
-from input_parser import parse_datafile
+from gendiff.input_parser import parse_datafile
 
 
 def generate_diff(first_file, second_file):
     first_dict = parse_datafile(first_file)
     second_dict =  parse_datafile(second_file)
-    list_of_keys = {}
+    print('{')
+    result = {}
     for key in first_dict:
-        list_of_keys[key] = None
+            if (key in second_dict) and second_dict[key] == first_dict[key]:
+                result['  ' + key] = first_dict[key]
+                del second_dict[key]
+            elif (key in second_dict) and second_dict[key] != first_dict[key]:
+                result['- ' + key] = first_dict[key]
+                result['+ ' + key] = second_dict[key]
+                del second_dict[key]
+            else:
+                result['- ' + key] = first_dict[key]
     for key in second_dict:
-        list_of_keys[key] = None
-    sorted_list = '{'
-    sorted_list += '\n'
-    for key in sorted(list_of_keys):
-        if first_dict.get(key) is True or first_dict.get(key) is False:  # если булево значение в первом словаре  # noqa: E501
-            if first_dict[key] is True:
-                sorted_list += f"- {key}: true\n"
-            elif first_dict[key] is False:
-                sorted_list += f"- {key}: false\n"
-            continue
-        elif second_dict.get(key) is True or second_dict.get(key) is False:  # если булево значение во втором словаре  # noqa: E501
-            if second_dict[key] is True:
-                sorted_list += f"+ {key}: true\n"
-            elif second_dict[key] is False:
-                sorted_list += f"+ {key}: false\n"
-            continue
-        if key in first_dict and key in second_dict:  # если ключ из первого словаря есть во втором словаре  # noqa: E501
-            if first_dict[key] == second_dict[key]:  # если значения равны
-                sorted_list += f"  {key}: {first_dict[key]}\n"
-            elif first_dict[key] != second_dict[key]:  # если значения не равны
-                sorted_list += f"- {key}: {first_dict[key]}\n"
-                sorted_list += f"+ {key}: {second_dict[key]}\n"
-            continue
-        if key not in second_dict and key in first_dict:  # если ключ из первого словаря отсутствует во втором словаре  # noqa: E501
-            sorted_list += f"- {key}: {first_dict[key]}\n"
-        if key not in first_dict and key in second_dict:  # если ключ из второго словаря отсутствует в первом словаре  # noqa: E501
-            sorted_list += f"+ {key}: {second_dict[key]}\n"
-    sorted_list += "}"
-    return sorted_list
+         result['+ ' + key] = second_dict[key]
+    result = dict(sorted(result.items(), key=lambda x: x[0][2]))
+    for key in result:
+         print(key,':', result[key])
+    print('}')
