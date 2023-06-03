@@ -5,3 +5,6 @@
 
 ### Gendiff json files
 [![asciicast](https://asciinema.org/a/0puRaESoqGANHFEEDqaiijLDC.png)](https://asciinema.org/a/0puRaESoqGANHFEEDqaiijLDC)
+
+### Gendiff yaml and yml files
+[![asciicast](https://asciinema.org/a/F2exvFHFOPfE9W2bswPU2n4Rn.png)](https://asciinema.org/a/F2exvFHFOPfE9W2bswPU2n4Rn)
