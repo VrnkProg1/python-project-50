@@ -15,6 +15,8 @@ def parse_args():
 def main():
     args = parse_args()
     first_file, second_file = args.first_file, args.second_file
+    if not args.format:
+        args.format = 'stylish'
 
     generate_diff(first_file, second_file)
 
