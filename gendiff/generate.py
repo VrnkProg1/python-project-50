@@ -22,3 +22,4 @@ def generate_diff(first_file, second_file):
     for key in result:
          print(key,':', result[key])
     print('}')
+    return result
