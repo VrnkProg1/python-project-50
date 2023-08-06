@@ -1,0 +1,2 @@
+plugins:
+  - codeclimate-python-test-coverage
