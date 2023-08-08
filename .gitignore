@@ -9,3 +9,4 @@ coverage.xml
 .vim
 codeclimate.yml
 coverage.xml
+confest.py
