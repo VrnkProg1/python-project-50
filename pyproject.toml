@@ -23,9 +23,6 @@ pytest-cov = "^4.1.0"
 gendiff = "gendiff.scripts.gendiff:main"
 
 
-[tool.poetry.group.dev.dependencies]
-pytest = "^7.3.1"
-
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
