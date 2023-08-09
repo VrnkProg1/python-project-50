@@ -9,7 +9,7 @@ packages = [
 ]
 classifiers = [
     "Topic :: Education",
-    "Programming Language :: Python :: 3.10.12"
+    "Programming Language :: Python :: 3.10"
 ]
 repository = "https://github.com/VrnkProg1/python-project-50"
 
