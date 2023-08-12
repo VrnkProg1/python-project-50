@@ -16,7 +16,6 @@ repository = "https://github.com/VrnkProg1/python-project-50"
 [tool.poetry.dependencies]
 python = "^3.10.12"
 PyYAML = "^6.0.1"
-hexlet-code = {version = "*", markers = "python_full_version >= '3.10.12' and python_full_version < '4.0'"}
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"
