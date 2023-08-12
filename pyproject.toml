@@ -14,7 +14,7 @@ classifiers = [
 repository = "https://github.com/VrnkProg1/python-project-50"
 
 [tool.poetry.dependencies]
-python = "^3.10.12"
+python = ">=3.10.12,<4.0"
 PyYAML = "^6.0.1"
 
 [tool.poetry.dev-dependencies]
